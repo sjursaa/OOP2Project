@@ -1,0 +1,33 @@
+﻿@page
+@model CRUD.Pages.Sensors.EditSensorModel
+@{
+	ViewData["Title"] = "Edit Sensor";
+}
+
+<div>
+
+	<h1>Edit Sensor</h1>
+
+	<form name="sensorForm" id="sensorForm" method="post">
+
+		<input name="SensorId" type="text" value="@Model.sensordb.SensorId" hidden/> 
+
+		Name:
+		<br />
+		<input name="SensorName" type="text" value="@Model.sensordb.SensorName" class="form-control input-lg" autofocus required />
+		<br />
+
+		SensorType:
+		<br />
+		<input name="SensorType" type="text" value="@Model.sensordb.SensorType" class="form-control input-lg" required />
+		<br />
+
+		Location:
+		<br />
+		<input name="SensorLocation" type="text" value="@Model.sensordb.SensorLocation" class="form-control input-lg" required />
+		<br />
+
+		<input id="saveButton" type="submit" value="Save" class="btn btn-info" />
+
+	</form>
+</div>

@@ -1,0 +1,73 @@
+﻿@page
+@model Datamonitor.Pages.LineChartModel
+@{
+	ViewData["Title"] = "Line Chart";
+	string chartTitle = "Temperature Data";
+	string chartUnit = "Celsius";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Line Chart</h1>
+</div>
+
+
+<script type="text/javascript" src="https://gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	// TODO fix chart
+	google.charts.load('current', {'packages': ['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Time', 'Data'],
+
+		@foreach(var data in Model.sensorDataList)
+		{
+			<text>['@data.Timestamp', @data.SensorValue],</text>
+		}
+
+		]);
+
+		var options = {
+			title: '@chartTitle',
+			curveType: 'function',
+			pointsVisible: true,
+			lineWidth: 3,
+			legend: 'none',
+			hAxis: { title: 'Time' },
+			vAxis: { title: '@chartUnit' },
+			width: '100%',
+			height: '100%',
+			chartArea: { width: '85%', height: '75%' },
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+		chart.draw(data, options);
+	}
+</script>
+
+
+<script type="text/javascript">
+	google.charts.load('current');
+	google.charts.setOnLoadCallback(drawVisualization);
+
+	function drawVisualization() {
+		var wrapper = new google.visualization.ChartWrapper({
+			chartType: 'LineChart',
+			dataTable: [['TimeStamp', 'Temperature Celsius'],
+		@foreach(var data in Model.sensorDataList)
+		{
+			<text>['@data.Timestamp', @Convert.ToInt16(data.SensorValue)],</text>
+		}
+			],
+
+			options: { 'title': '@chartTitle' },
+			containerId: 'vis_div'
+		});
+		wrapper.draw();
+	}
+</script>
+
+<div class="container-fluid lead">
+	<div id="vis_div" style="width: 800px; height:600px"></div>
+</div>

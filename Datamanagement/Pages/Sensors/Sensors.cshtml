@@ -1,0 +1,38 @@
+﻿@page
+@model CRUD.Pages.Sensors.SensorsModel
+@{
+	ViewData["Title"] = "Sensors";
+}
+
+<div>
+	<h1>Sensors</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>SensorId</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Location</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var sensor in Model.sensors)
+			{
+				<tr>
+					@* <td>@sensor.SensorId</td> *@
+					<td><a href="./EditSensor?sensorid=@sensor.SensorId">@sensor.SensorId</a></td>
+					<td>@sensor.SensorName</td>
+					<td>@sensor.SensorType</td>
+					<td>@sensor.SensorLocation</td>
+						
+					<td><a href="./DeleteSensor?sensorid=@sensor.SensorId" class="btn btn-danger" role="button">Delete Sensor</a></td>
+					
+				</tr>
+				
+			}
+		</tbody>
+	</table>
+
+	<a href="./NewSensor" class="btn btn-info" role="button">New Sensor</a>
+</div>

@@ -1,0 +1,35 @@
+﻿@page
+@model CRUD.Pages.Accounts.AccountsModel
+@{
+	ViewData["Title"] = "Accounts";
+}
+
+
+<div>
+	<h1>Accounts</h1>
+
+	<p>Coming soon to a website near u</p>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>SensorId</th>
+				<th>SensorId</th>
+			</tr>
+		</thead>
+		<tbody>
+			@* @foreach (var sensor in Model.accounts) *@
+			{
+				<tr>
+					@* <td>@sensor.SensorId</td> *@
+					@* <td><a href="./EditSensor?sensorid=@sensor.SensorId"@sensor.SensorId</a></td> *@
+						
+					
+				</tr>
+				
+			}
+		</tbody>
+	</table>
+
+	<a href="./NewAccount" class="btn btn-info" role="button">New Account</a>
+</div>

@@ -1,0 +1,31 @@
+﻿@page
+@model CRUD.Pages.Sensors.NewSensorModel
+@{
+	ViewData["Title"] = "New Sensor";
+}
+
+<div>
+
+	<h1>New Sensor</h1>
+
+	<form name="sensorForm" id="sensorForm" method="post">
+
+		Name:
+		<br />
+		<input name="SensorName" type="text" class="form-control input-lg" autofocus required />
+		<br />
+
+		SensorType:
+		<br />
+		<input name="SensorType" type="text" class="form-control input-lg" required />
+		<br />
+
+		Location:
+		<br />
+		<input name="SensorLocation" type="text" class="form-control input-lg" required />
+		<br />
+
+		<input id="saveButton" type="submit" value="Save" class="btn btn-info" />
+
+	</form>
+</div>
